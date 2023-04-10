@@ -32,7 +32,12 @@ def fetch_todo() -> dict:
     Returns:
         None
 """
-
+def edit_task_by_id(text: str , task_id: int) -> int:
+    cursor = postgres.cursor()
+    query = "Edit tasks set task = '{}' where id = {};".format(text,task_id)
+    cursor.execute(query)
+    postgres.commit()
+    cursor.close()
 
 def update_task_entry(task_id: int , text: str):
     cursor = postgres.cursor()
@@ -82,6 +87,8 @@ def fetch_max_id() -> int:
         return data
     except:
         print("Failed")
+
+
 
     
 

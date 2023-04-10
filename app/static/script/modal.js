@@ -66,7 +66,20 @@ $(document).ready(function () {
     
 
    
-    
+    $('.edit').click(function () {
+        const edit = $(this)
+        $.ajax({
+            type: 'EDIT',
+            url: '/edit/' + edit.data('source'),
+            success: function (res) {
+                console.log(res.response)
+                location.reload();
+            },
+            error: function () {
+                console.log('Error');
+            }
+        });
+    });
     
     $('.remove').click(function () {
         const remove = $(this)
